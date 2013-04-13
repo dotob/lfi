@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  path: MyString
+  interval: 1
+  active: false
+  last_visit: 2013-04-13 11:02:19
+
+two:
+  path: MyString
+  interval: 1
+  active: false
+  last_visit: 2013-04-13 11:02:19

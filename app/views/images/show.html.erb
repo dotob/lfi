@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @image.name %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @image.path %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @image.type %>
+</p>
+
+<p>
+  <b>Last change:</b>
+  <%= @image.last_change %>
+</p>
+
+<p>
+  <b>Last visit:</b>
+  <%= @image.last_visit %>
+</p>
+
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

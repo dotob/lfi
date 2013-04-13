@@ -1,0 +1,2 @@
+module ScanPathsHelper
+end

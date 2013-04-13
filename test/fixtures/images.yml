@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  path: MyString
+  type: 
+  last_change: 2013-04-13 11:02:00
+  last_visit: 2013-04-13 11:02:00
+
+two:
+  name: MyString
+  path: MyString
+  type: 
+  last_change: 2013-04-13 11:02:00
+  last_visit: 2013-04-13 11:02:00
