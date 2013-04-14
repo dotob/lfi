@@ -1,0 +1,30 @@
+h3 directories
+- if @scan_paths.any?
+  table#scan_paths
+  - for item in @scan_paths do
+    tr
+      td.name = item.path
+      td.active = item.active
+      td.interval = item.interval
+      td.last_visit = item.last_visit
+- else
+  p No path to scan found please add some.
+    Thank you!
+
+= form_for(@scan_path) do |f|
+  div.field
+    = f.label :path
+    = f.text_field :path
+  div.actions
+    = f.submit
+
+h3 images
+- if @images.any?
+  table#images
+  - for item in @images do
+    tr
+      td.name = item.name
+      td.path = item.path
+- else
+  p No images found please add some.
+    Thank you!
