@@ -3,6 +3,10 @@ Lfi::Application.routes.draw do
   
   resources :scan_paths
   resources :images
+  match 'start_scanning' => 'main#start_scanning'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
