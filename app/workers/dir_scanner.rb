@@ -6,15 +6,15 @@ class DirScanner
   end
 
   def self.doit(directory)
-    Rails::logger.debug 'scanning dir #{directory}'
+    Rails::logger.debug "scanning dir #{directory}"
     # scan for dirs
-    Dir.glob('#{directory}/*') do |f|
+    Dir.glob("#{directory}/*") do |f|
       DirScanner.doit(f)
     end
     # scan for files
-    #Dir.glob('#{directory}/{*.jpg,*.xmp}') do |f|
-    Dir.glob('#{directory}/*.*}') do |f|
-      i = Image.lookup_or_create
+    Dir.glob("#{directory}/{*.jpg,*.xmp}") do |f|
+      Rails::logger.debug "found #{f}"
+      i = Image.lookup_or_create(f)
       i.file_name = File.basename(f)
       i.path = f
       i.directory = File.dirname(f)
@@ -23,7 +23,7 @@ class DirScanner
       i.last_change = File.mtime(f) 
       i.last_visit = DateTime.now
       i.save
-      Rails::logger.debug 'found file #{i.path}'
+      Rails::logger.debug "found file #{i.path}"
     end
   end
 end
