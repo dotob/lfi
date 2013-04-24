@@ -3,9 +3,9 @@ class CreateImages < ActiveRecord::Migration
     create_table :images do |t|
       t.string :name
       t.string :file_name
-      t.string :path
+      t.string :path, :limit => 1000
       t.string :directory
-      t.string :type
+      t.string :file_type
       t.datetime :last_change
       t.datetime :last_visit
 

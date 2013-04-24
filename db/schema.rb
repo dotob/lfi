@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(:version => 20130413090219) do
   create_table "images", :force => true do |t|
     t.string   "name"
     t.string   "file_name"
-    t.string   "path"
+    t.string   "path",        :limit => 1000
     t.string   "directory"
-    t.string   "type"
+    t.string   "file_type"
     t.datetime "last_change"
     t.datetime "last_visit"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "images", ["path"], :name => "index_images_on_path", :unique => true
