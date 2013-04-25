@@ -9,7 +9,8 @@ gem 'sqlite3'
 gem 'sidekiq'
 gem 'slim'
 gem 'bootstrap-sass'
-gem 'sinatra', require: false
+gem 'sinatra', :require => false
+gem 'whenever', :require => false
 
 # Gems used only for assets and not required
 # in production environments by default.
