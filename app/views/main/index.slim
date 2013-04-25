@@ -1,43 +1,13 @@
-div class="hero-unit"
+div.hero-unit
+  h3 status
   = form_tag '/start_scanning' do
     = button_tag("start", :class => "btn btn-success")
-div.accordion id="accordion2"
-  div.accordion-group
-    div.accordian-heading
-      a.accordion-toggle data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" directories
-    div class="accordion-body collapse" id="collapseOne"
-      div.accordion-inner
-        - if @scan_paths.any?
-          table.table-striped#scan_paths
-            tr 
-              th path
-              th active
-              th interval
-              th last_visit
-              - for item in @scan_paths do
-                tr
-                  td.name = item.path
-                  td.active = item.active
-                  td.interval = item.interval
-                  td.last_visit = item.last_visit
-        - else
-          p No path to scan found please add some.
-            Thank you!
-
-        = form_for @scan_path,:html => { :class => 'form-inline'} do |f|
-          div.field
-            = f.label :path
-            = f.text_field :path
-          div.field
-            = f.label :active
-            = f.check_box :active
-          div.actions
-            = f.submit
+  h3 #{@jobs} jobs
 
 div.hero-unit
   h3 images
   - if @images.any?
-      table.table-striped#images
+      table class="table table-striped table-bordered" id="images"
         tr 
           th name
           th path

@@ -41,16 +41,17 @@ class ScanPathsController < ApplicationController
   # POST /scan_paths.json
   def create
     @scan_path = ScanPath.new(params[:scan_path])
-
-    respond_to do |format|
-      if @scan_path.save
-        format.html { redirect_to @scan_path, notice: 'Scan path was successfully created.' }
-        format.json { render json: @scan_path, status: :created, location: @scan_path }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @scan_path.errors, status: :unprocessable_entity }
-      end
-    end
+    @scan_path.save
+    redirect_to "/conf"
+#    respond_to do |format|
+#      if @scan_path.save
+#        format.html { redirect_to @scan_path, notice: 'Scan path was successfully created.' }
+#        format.json { render json: @scan_path, status: :created, location: @scan_path }
+#      else
+#        format.html { render action: "new" }
+#        format.json { render json: @scan_path.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # PUT /scan_paths/1
@@ -75,9 +76,11 @@ class ScanPathsController < ApplicationController
     @scan_path = ScanPath.find(params[:id])
     @scan_path.destroy
 
-    respond_to do |format|
-      format.html { redirect_to scan_paths_url }
-      format.json { head :no_content }
-    end
+    redirect_to "/conf"
+    #respond_to do |format|
+    #  format.html { redirect_to scan_paths_url }
+    #  format.json { head :no_content }
+    #end
+
   end
 end

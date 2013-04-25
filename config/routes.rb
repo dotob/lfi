@@ -3,7 +3,9 @@ Lfi::Application.routes.draw do
   
   resources :scan_paths
   resources :images
+  root :to => 'main#index'
   match 'start_scanning' => 'main#start_scanning'
+  match 'conf' => 'main#conf'
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
@@ -57,7 +59,7 @@ Lfi::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'main#index'
+  # root :to => 'main#index'
 
   # See how all your routes lay out with "rake routes"
 
