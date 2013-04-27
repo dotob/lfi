@@ -3,6 +3,7 @@ class MainController < ApplicationController
 
   def index
     stats = Sidekiq::Stats.new
+    @image_count = Image.count
     @jobs = stats.enqueued
     @images = Image.order("last_visit DESC").limit(100)
   end

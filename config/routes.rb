@@ -6,6 +6,7 @@ Lfi::Application.routes.draw do
   root :to => 'main#index'
   match 'start_scanning' => 'main#start_scanning'
   match 'conf' => 'main#conf'
+  match 'search' => 'main#search'
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
