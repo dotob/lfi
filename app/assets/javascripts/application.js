@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require handlebars.runtime
+//= require underscore
 //= require_tree ./templates
 //= require_tree .
