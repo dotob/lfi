@@ -1,4 +1,4 @@
 tr
   td {{name}}
   td {{path}}
-  td {{typ}}
+  td {{file_type}}

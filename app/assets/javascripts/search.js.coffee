@@ -1,6 +1,9 @@
 $(document).ready ->
-  $("#searchterm").keypress ->
-    throttled_search $(this).val()
+  $("#searchterm").focus()
+  $("#searchterm").keyup ->
+    $("#images.tr").remove()
+    #throttled_search $(this).val()
+    search $(this).val()
     
 
 # get search stuff from rails...
@@ -9,7 +12,8 @@ fill = (context) ->
   $(t).appendTo("#images")
 
 search = (searchterm) ->
-  $.getJSON '/image_search/#{searchterm}', (results) ->
-   fill results
+  $.getJSON "/image_search/#{searchterm}", (results) ->
+    $.each results, (k, v)->
+      fill v
 
 throttled_search = _.throttle search, 200
