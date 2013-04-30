@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413090219) do
+ActiveRecord::Schema.define(:version => 20130430215629) do
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(:version => 20130413090219) do
   end
 
   add_index "images", ["path"], :name => "index_images_on_path", :unique => true
+
+  create_table "order_items", :force => true do |t|
+    t.string   "file_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "key"
+    t.string   "name"
+    t.string   "login"
+    t.integer  "count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "scan_paths", :force => true do |t|
     t.string   "path"
