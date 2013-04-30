@@ -7,7 +7,7 @@ Lfi::Application.routes.draw do
   match 'start_scanning' => 'main#start_scanning'
   match 'conf' => 'main#conf'
   match 'search' => 'main#search'
-  match 'image_search/:searchterm' => 'image_search#search'
+  match 'image_search/:limit/:searchterm' => 'image_search#search'
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
