@@ -6,7 +6,7 @@ Lfi::Application.routes.draw do
   root :to => 'main#index'
   match 'start_scanning' => 'main#start_scanning'
   match 'conf' => 'main#conf'
-  match 'search' => 'main#search'
+  match 'search' => 'main#image_search'
   match 'image_search/:limit/:searchterm' => 'image_search#search'
 
   require 'sidekiq/web'
