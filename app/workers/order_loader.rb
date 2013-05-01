@@ -10,9 +10,11 @@ class OrderLoader
   end
 
   def update_orders
+    Rails::logger.debug "OrderLoader: start updating"
     json_data = get_orders_json
     order_list = MultiJson.load(json_data, :symbolize_keys => true)
     order_list.each do |jo|
+      Rails::logger.debug "OrderLoader: create or find order #{jo[:id]} - #{jo[:name]}"
       o = Order.create_from_json(order_list)
       update_order(o)
     end

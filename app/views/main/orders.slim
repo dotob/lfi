@@ -1,0 +1,22 @@
+div.hero-unit
+  h3 status
+  = form_tag '/start_updating_orders' do
+    = button_tag("bestellungen aktualisieren", :class => "btn btn-success")
+  h3 #{@jobs} jobs
+
+div.hero-unit
+  h3 bestellungen (#{@order_count})
+  - if @orders.any?
+      table class="table table-striped table-bordered" id="orders"
+        tr 
+          th name
+          th path
+          th typ
+          - for item in @orders do
+            tr
+              td.name = item.name
+              td.path = item.path
+              td.typ = item.file_type
+  - else
+    p No orders found please add some.
+      Thank you!

@@ -21,4 +21,14 @@ class MainController < ApplicationController
     end
     redirect_to :action => "index"
   end
+
+  def orders
+    @order_count = Order.count
+    @orders = Order.order("id DESC").limit(20)
+  end
+  
+  def start_updating_orders
+    OrderLoader.perform_async
+    redirect_to :action => "orders"
+  end
 end

@@ -5,8 +5,10 @@ Lfi::Application.routes.draw do
   resources :images
   root :to => 'main#index'
   match 'start_scanning' => 'main#start_scanning'
+  match 'start_updating_orders' => 'main#start_updating_orders'
   match 'conf' => 'main#conf'
-  match 'search' => 'main#image_search'
+  match 'orders' => 'main#orders'
+  match 'image_search' => 'main#image_search'
   match 'image_search/:limit/:searchterm' => 'image_search#search'
 
   require 'sidekiq/web'
