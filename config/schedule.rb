@@ -18,3 +18,16 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+
+every 1.minute do
+  for sp in ScanPath.find_all_by_active(true)
+    if (DateTime.now - sp.last_visit) > sp.interval
+      DirScanner.perform_async(sp.id)
+    end
+  end
+end
+
+every 10.minute do 
+  OrderLoader.perform_async()
+end

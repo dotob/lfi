@@ -15,7 +15,7 @@ class MainController < ApplicationController
 
   def start_scanning
     for sp in ScanPath.find_all_by_active(true)
-      DirScanner.perform_async(ScanPath.first.path)
+      DirScanner.perform_async(sp)
       sp.last_visit = DateTime.now
       sp.save
     end

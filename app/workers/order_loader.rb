@@ -26,6 +26,7 @@ class OrderLoader
     if order_items
       order_items.each do |oi|
         oi = OrderItem.find_or_initialize_by_file_name(oi[:file_name])
+
         oi.save
       end
     end
