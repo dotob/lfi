@@ -15,17 +15,19 @@ class OrderLoader
     order_list = MultiJson.load(json_data, :symbolize_keys => true)
     order_list.each do |jo|
       Rails::logger.debug "OrderLoader: create or find order #{jo[:id]} - #{jo[:name]}"
-      o = Order.create_from_json(order_list)
+      o = Order.create_from_json(jo)
       update_order(o)
     end
   end
   
   def update_order(o)
-    json_data = get_orders_json(o.key)
+    json_data = get_order_images_json(o.key)
     order_items = MultiJson.load(json_data, :symbolize_keys => true)
-    order_items.each do |oi|
-      oi = OrderItem.find_or_initialize_by_file_name(oi[:file_name])
-      oi.save
+    if order_items
+      order_items.each do |oi|
+        oi = OrderItem.find_or_initialize_by_file_name(oi[:file_name])
+        oi.save
+      end
     end
   end
 
