@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130430215629) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "key"
+    t.integer  "key"
     t.string   "name"
     t.string   "login"
     t.integer  "count"

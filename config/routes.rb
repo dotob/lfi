@@ -3,13 +3,15 @@ Lfi::Application.routes.draw do
   
   resources :scan_paths
   resources :images
-  root :to => 'main#index'
+  root :to => 'main#images'
   match 'start_scanning' => 'main#start_scanning'
   match 'start_updating_orders' => 'main#start_updating_orders'
   match 'conf' => 'main#conf'
   match 'orders' => 'main#orders'
   match 'image_search' => 'main#image_search'
   match 'image_search/:limit/:searchterm' => 'image_search#search'
+  match 'order_search' => 'main#order_search'
+  match 'order_search/:limit/:searchterm' => 'order_search#search'
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

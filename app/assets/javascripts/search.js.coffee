@@ -1,8 +1,8 @@
 $(document).ready ->
   $("#searchterm").focus()
   $("#searchterm").keyup ->
-    $(".imageresult").remove()
-    $("#image_count").text("nix gefunden")
+    $(".resultrow").remove()
+    $("#result_count").text("nix gefunden")
     searchterm = $(this).val()
     if searchterm.length > 0
       throttled_search searchterm
@@ -10,19 +10,28 @@ $(document).ready ->
 
 # render a table row
 fill = (context) ->
-  t = HandlebarsTemplates['image_table_row'](context);
-  $(t).appendTo("#images")
+  t = HandlebarsTemplates[table_row_template()](context);
+  $(t).appendTo("#results")
 
 # do searchrequest to searchservice
 search = (searchterm) ->
   l = limit()
-  $.getJSON "/image_search/#{l}/#{searchterm}", (results) ->
+  url = "/#{search_type()}/#{l}/#{searchterm}"
+  $.getJSON url, (results) ->
     count = results.length
     elips = ""
     elips = "..." if count == l 
-    $("#image_count").text("gefunden (#{count}#{elips})")
+    $("#result_count").text("gefunden (#{count}#{elips})")
     $.each results, (k, v)->
       fill v
+
+# find which search to query
+search_type = () ->
+  $("#searchterm").attr("data-search")
+
+# find which template to use for table
+table_row_template = () ->
+  $("#results").attr("data-row-template")
 
 # find out how many results to return
 limit = () ->

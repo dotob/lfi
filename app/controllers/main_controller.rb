@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   respond_to :html, :xml, :json
 
-  def index
+  def images
     stats = Sidekiq::Stats.new
     @image_count = Image.count
     @jobs = stats.enqueued
@@ -16,7 +16,7 @@ class MainController < ApplicationController
   def start_scanning
     for sp in ScanPath.find_all_by_active(true)
       DirScanner.perform_async(ScanPath.first.path)
-      sp.last_visit = DateTime.Now
+      sp.last_visit = DateTime.now
       sp.save
     end
     redirect_to :action => "index"
@@ -24,7 +24,7 @@ class MainController < ApplicationController
 
   def orders
     @order_count = Order.count
-    @orders = Order.order("id DESC").limit(20)
+    @orders = Order.order("key DESC").limit(20)
   end
   
   def start_updating_orders

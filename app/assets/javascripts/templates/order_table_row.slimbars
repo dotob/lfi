@@ -1,0 +1,4 @@
+tr.resultrow
+  td {{login}}
+  td {{name}}
+  td {{key}}

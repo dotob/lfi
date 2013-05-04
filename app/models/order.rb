@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
     Rails::logger.debug "Order: create or find order #{j[:id]} - #{j[:name]}"
     begin
       o = Order.find_or_initialize_by_key(j[:id])
-      o.key = j[:id]
+      o.key = j[:id].to_i
       o.name = j[:name]
       o.login = j[:login]
       o.count = j[:total].to_i

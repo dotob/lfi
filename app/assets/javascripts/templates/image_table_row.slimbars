@@ -1,4 +1,4 @@
-tr.imageresult
+tr.resultrow
   td {{name}}
   td {{path}}
   td {{file_type}}
