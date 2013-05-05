@@ -38,4 +38,9 @@ class MainController < ApplicationController
     OrderLoader.perform_async
     redirect_to :action => "orders"
   end
+  
+  def start_updating_order
+    OrderItemsLoader.perform_async(params[:id].to_i)
+    redirect_to :action => "orders"
+  end
 end

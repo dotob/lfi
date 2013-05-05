@@ -11,8 +11,9 @@ div.hero-unit
         tr 
           th login
           th name
-          th key
-          th count
+          th id
+          th bilderanzahl
+          th update
           - for item in @orders do
             tr
               td.login 
@@ -20,6 +21,8 @@ div.hero-unit
               td.name = item.name
               td.key = item.key
               td.count = item.count
+              td.update
+                a href="start_updating_order/#{item.id}" update
   - else
     p No orders found please add some.
       Thank you!

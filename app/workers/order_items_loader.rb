@@ -14,9 +14,14 @@ class OrderItemsLoader
       order_items.each do |oi|
         begin
           fn = oi[:filename_orig]
+    Rails::logger.debug "OrderItemsLoader: add orderitem for file #{fn}"
           oi = OrderItem.find_or_initialize_by_file_name(fn)
           oi.orders << order
-          oi.images = find_images(fn)
+          imgs = find_images(fn)
+          unless imgs.nil?
+            Rails::logger.debug "OrderItemsLoader: found #{imgs.count} originals for #{fn}"
+          end
+          oi.images = imgs 
           oi.save
         rescue SystemCallError => autsch
           Rails::logger.debug "OrderItemsLoader: failed to save orderitem #{fn} with error: #{autsch}"
@@ -27,8 +32,8 @@ class OrderItemsLoader
 
   def find_images(filename)
     unless filename.nil?
-      fn = File.basename(filename)
-      Image.where('name = "?"', fn)
+      fn = File.basename(filename, File.extname(filename))
+      Image.where('name = ?', fn)
     end
   end
 

@@ -1,12 +1,14 @@
 div.hero-unit
-  h3 bestellung #{@order.name}
+  h3 bestellung #{@order.name}, #{@order.login}
   - if @order.order_items.any?
       table class="table table-striped table-bordered" id="order_items"
         tr 
-          th datei
+          th datei (bestellung)
+          th datei (original)
           - for item in @order.order_items do
             tr
-              td.file_name = item.file_name
+              td.from_order = item.file_name
+              td.file_original = item.get_image_paths
   - else
     p No order_items found please add some.
       Thank you!
