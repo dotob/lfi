@@ -12,7 +12,7 @@ class OrderLoader
     order_list.each do |jo|
       Rails::logger.debug "OrderLoader: create or find order #{jo[:id]} - #{jo[:name]}"
       o = Order.create_from_json(jo)
-      OrderItemsLoader.performa_async(o)
+      OrderItemsLoader.perform_async(o.id)
     end
   end
   

@@ -3,8 +3,8 @@ class MainController < ApplicationController
 
   def images
     stats = Sidekiq::Stats.new
-    @image_count = Image.count
     @jobs = stats.enqueued
+    @image_count = Image.count
     @images = Image.order("last_visit DESC").limit(100)
   end
 
@@ -15,14 +15,17 @@ class MainController < ApplicationController
 
   def start_scanning
     for sp in ScanPath.find_all_by_active(true)
-      DirScanner.perform_async(sp)
+      Rails::logger.debug "start scan for #{sp.path}"
+      DirScanner.perform_async(sp.path)
       sp.last_visit = DateTime.now
       sp.save
     end
-    redirect_to :action => "index"
+    redirect_to :action => "images"
   end
 
   def orders
+    stats = Sidekiq::Stats.new
+    @jobs = stats.enqueued
     @order_count = Order.count
     @orders = Order.order("key DESC").limit(20)
   end

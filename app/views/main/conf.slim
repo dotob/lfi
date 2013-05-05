@@ -1,5 +1,5 @@
 div.hero-unit
-  h3 scanpaths
+  h3 verzeichnisse die durchsucht werden sollen
   - if @scan_paths.any?
     table class="table table-striped table-bordered" id="scan_paths"
       tr 
@@ -16,15 +16,14 @@ div.hero-unit
             td.last_visit = item.last_visit
             td
               a href="/scan_paths/#{item.id}" data-confirm="wirklich löschen?" data-method="delete" rel="nofollow" class="btn btn-danger novisithighlight" delete
-                
+
   - else
-    p No path to scan found please add some.
-      Thank you!
-  h3 create new scanpath
+    p keine verzeichnisse bisher. lege welche an!
+  h3 verzeichnisse anlegen
   = form_for @scan_path,:html => { :class => 'form-inline'} do |f|
     input type="text" placeholder="path" id="scan_path_path" name="scan_path[path]"
     input type="text" placeholder="interval" id="scan_path_interval" name="scan_path[interval]"
     label class="checkbox" 
-      input type="checkbox" id="scan_path_active" name="scan_path[active]" active
-    button type="submit" class="btn" create
+      input type="checkbox" id="scan_path_active" name="scan_path[active]" aktiv
+    button type="submit" class="btn" anlegen
 

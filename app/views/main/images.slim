@@ -1,11 +1,11 @@
 div.hero-unit
   h3 status
   = form_tag '/start_scanning' do
-    = button_tag("start", :class => "btn btn-success")
+    = button_tag("start scannen nach bildern", :class => "btn btn-success")
   h3 #{@jobs} jobs
 
 div.hero-unit
-  h3 images (#{@image_count})
+  h3 bilder (#{@image_count})
   - if @images.any?
       table class="table table-striped table-bordered" id="images"
         tr 
@@ -18,5 +18,4 @@ div.hero-unit
               td.path = item.path
               td.typ = item.file_type
   - else
-    p No images found please add some.
-      Thank you!
+    p noch keine bilder. starte den scan!

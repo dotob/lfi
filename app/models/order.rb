@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  has_many :order_contents
   has_many :order_items, :through => :order_contents
   attr_accessible :count, :key, :login, :name
 
