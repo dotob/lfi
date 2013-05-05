@@ -1,5 +1,5 @@
 class OrderItem < ActiveRecord::Base
-  has_many :orders, :through => :order2orderitems
-  has_many :images, :through => :orderitems2images
+  has_many :orders, :through => :order_contents
+  has_many :images, :through => :order_item_images
   attr_accessible :file_name
 end

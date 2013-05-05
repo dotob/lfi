@@ -8,6 +8,7 @@ Lfi::Application.routes.draw do
   match 'start_updating_orders' => 'main#start_updating_orders'
   match 'conf' => 'main#conf'
   match 'orders' => 'main#orders'
+  match 'order/:id' => 'main#order'
   match 'image_search' => 'main#image_search'
   match 'image_search/:limit/:searchterm' => 'image_search#search'
   match 'order_search' => 'main#order_search'

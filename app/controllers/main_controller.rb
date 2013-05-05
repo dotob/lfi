@@ -27,6 +27,10 @@ class MainController < ApplicationController
     @orders = Order.order("key DESC").limit(20)
   end
   
+  def order
+    @order = Order.find(params[:id])
+  end
+  
   def start_updating_orders
     OrderLoader.perform_async
     redirect_to :action => "orders"

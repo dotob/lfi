@@ -15,7 +15,8 @@ div.hero-unit
           th count
           - for item in @orders do
             tr
-              td.login = item.login
+              td.login 
+                a href="order/#{item.id}" = item.login
               td.name = item.name
               td.key = item.key
               td.count = item.count

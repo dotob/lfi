@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  has_many :order_items, :through => :order2orderitems
+  has_many :order_items, :through => :order_contents
   attr_accessible :count, :key, :login, :name
 
   def self.create_from_json(j)
