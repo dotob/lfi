@@ -2,11 +2,13 @@ Lfi::Application.routes.draw do
 
   
   resources :scan_paths
+  resources :copy_targets
   resources :images
   root :to => 'main#images'
   match 'start_scanning' => 'main#start_scanning'
   match 'start_updating_orders' => 'main#start_updating_orders'
   match 'start_updating_order/:id' => 'main#start_updating_order'
+  match 'start_copy_order/:order_id/:copy_target_id' => 'main#start_copy_order'
   match 'conf' => 'main#conf'
   match 'orders' => 'main#orders'
   match 'order/:id' => 'main#order'

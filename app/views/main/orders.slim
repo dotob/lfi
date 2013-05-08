@@ -13,7 +13,8 @@ div.hero-unit
           th name
           th id
           th bilderanzahl
-          th update
+          th updaten
+          th kopieren
           - for item in @orders do
             tr
               td.login 
@@ -23,6 +24,15 @@ div.hero-unit
               td.count = item.count
               td.update
                 a href="start_updating_order/#{item.id}" update
+              td.copy
+                div.btn-group
+                  a.btn.dropdown-toggle data-toggle="dropdown" href="#"
+                    kopieren nach
+                    span.caret
+                  ul.dropdown-menu
+                    - for copy_target in @copy_targets do
+                      a href="start_copy_order/#{item.id}/#{copy_target.id}" = copy_target.path
+
   - else
     p No orders found please add some.
       Thank you!

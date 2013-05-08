@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  path: MyString
+  prio: 1
+  active: false
+
+two:
+  path: MyString
+  prio: 1
+  active: false

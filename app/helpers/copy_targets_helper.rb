@@ -1,0 +1,2 @@
+module CopyTargetsHelper
+end

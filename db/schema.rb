@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504210559) do
+ActiveRecord::Schema.define(:version => 20130508175905) do
+
+  create_table "copy_targets", :force => true do |t|
+    t.string   "path"
+    t.integer  "prio"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "images", :force => true do |t|
     t.string   "name"

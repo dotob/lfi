@@ -11,6 +11,8 @@ class MainController < ApplicationController
   def conf
     @scan_paths = ScanPath.all
     @scan_path = ScanPath.new
+    @copy_targets = CopyTarget.all
+    @copy_target = CopyTarget.new
   end
 
   def start_scanning
@@ -28,6 +30,7 @@ class MainController < ApplicationController
     @jobs = stats.enqueued
     @order_count = Order.count
     @orders = Order.order("key DESC").limit(20)
+    @copy_targets = CopyTarget.all.order("prio")
   end
   
   def order
@@ -42,5 +45,11 @@ class MainController < ApplicationController
   def start_updating_order
     OrderItemsLoader.perform_async(params[:id].to_i)
     redirect_to :action => "orders"
+  end
+
+  def start_copy_order
+    order = Order.find(params[:order_id])
+    copy_target = CopyTarget.find(params[:copy_target_id])
+    OrderCopyWorker.perform_async(order.id, copy_target.path)
   end
 end

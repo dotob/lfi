@@ -1,0 +1,29 @@
+<%= form_for(@copy_target) do |f| %>
+  <% if @copy_target.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@copy_target.errors.count, "error") %> prohibited this copy_target from being saved:</h2>
+
+      <ul>
+      <% @copy_target.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
+  </div>
+  <div class="field">
+    <%= f.label :prio %><br />
+    <%= f.number_field :prio %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
