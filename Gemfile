@@ -27,6 +27,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :assets do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "debugger"
+  gem "rack-mini-profiler"
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -40,7 +47,3 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-gem 'debugger'#, group: [:development, :test]

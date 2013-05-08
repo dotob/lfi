@@ -8,7 +8,8 @@ div.hero-unit
           - for item in @order.order_items do
             tr
               td.from_order = item.file_name
-              td.file_original = item.get_image_paths
+              td.file_original 
+                a href="file://#{item.get_image_paths}" = item.get_image_paths
   - else
     p No order_items found please add some.
       Thank you!
