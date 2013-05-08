@@ -12,17 +12,19 @@ class OrderItemsLoader
     json_data = get_order_images_json(order.key)
     order_items = MultiJson.load(json_data, :symbolize_keys => true)
     if order_items
+      # reset orders, otherwise multiple runs will add more and more order_items
+      order.order_items.clear
       order_items.each do |oi|
         begin
           fn = oi[:filename_orig]
-    Rails::logger.debug "OrderItemsLoader: add orderitem for file #{fn}"
+          Rails::logger.debug "OrderItemsLoader: add orderitem for file #{fn}"
           oi = OrderItem.find_or_initialize_by_file_name(fn)
           oi.orders << order
           imgs = find_images(fn)
           unless imgs.nil?
             Rails::logger.debug "OrderItemsLoader: found #{imgs.count} originals for #{fn}"
           end
-          oi.images = imgs 
+          oi.images = imgs
           oi.save
         rescue SystemCallError => autsch
           Rails::logger.debug "OrderItemsLoader: failed to save orderitem #{fn} with error: #{autsch}"
