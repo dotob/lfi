@@ -4,6 +4,7 @@ require "uri"
 
 class OrderLoader
   include Sidekiq::Worker
+  sidekiq_options :queue => :orderloader
 
   def perform
     Rails::logger.debug "OrderLoader: start updating"

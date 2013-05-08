@@ -1,7 +1,7 @@
 div.hero-unit
   h3 status
   = form_tag '/start_updating_orders' do
-    = button_tag("bestellungen aktualisieren", :class => "btn btn-success")
+    = button_tag("alle bestellungen aktualisieren", :class => "btn btn-success")
   h3 #{@jobs} jobs
 
 div.hero-unit
@@ -23,15 +23,16 @@ div.hero-unit
               td.key = item.key
               td.count = item.count
               td.update
-                a href="start_updating_order/#{item.id}" update
+                a class="btn btn-primary" href="start_updating_order/#{item.id}" update
               td.copy
                 div.btn-group
-                  a.btn.dropdown-toggle data-toggle="dropdown" href="#"
+                  a class="btn dropdown-toggle" data-toggle="dropdown" href="#"
                     kopieren nach
                     span.caret
                   ul.dropdown-menu
                     - for copy_target in @copy_targets do
-                      a href="start_copy_order/#{item.id}/#{copy_target.id}" = copy_target.path
+                      li
+                        a href="start_copy_order/#{item.id}/#{copy_target.id}" = copy_target.path
 
   - else
     p No orders found please add some.

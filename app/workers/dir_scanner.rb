@@ -1,5 +1,6 @@
 class DirScanner
   include Sidekiq::Worker
+  sidekiq_options :queue => :dirscanner
 
   def perform(directory)
     Rails::logger.debug "DirScanner: scanning dir #{directory}"

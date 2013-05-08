@@ -30,7 +30,7 @@ class MainController < ApplicationController
     @jobs = stats.enqueued
     @order_count = Order.count
     @orders = Order.order("key DESC").limit(20)
-    @copy_targets = CopyTarget.all.order("prio")
+    @copy_targets = CopyTarget.order("prio")
   end
   
   def order
@@ -50,6 +50,7 @@ class MainController < ApplicationController
   def start_copy_order
     order = Order.find(params[:order_id])
     copy_target = CopyTarget.find(params[:copy_target_id])
-    OrderCopyWorker.perform_async(order.id, copy_target.path)
+    CopyOrderWorker.perform_async(order.id, copy_target.path)
+    redirect_to :action => "orders"
   end
 end

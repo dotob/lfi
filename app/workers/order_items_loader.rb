@@ -4,6 +4,7 @@ require "uri"
 
 class OrderItemsLoader
   include Sidekiq::Worker
+  sidekiq_options :queue => :orderloader
 
   def perform(order_id)
     order = Order.find(order_id)
