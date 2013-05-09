@@ -17,4 +17,12 @@ class Order < ActiveRecord::Base
     end
     return o
   end
+
+  def image_matches
+    matches = 0
+    for oi in order_items
+      if oi.images.any? then matches += 1 end
+    end
+    matches
+  end
 end
