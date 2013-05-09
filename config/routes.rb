@@ -16,6 +16,7 @@ Lfi::Application.routes.draw do
   match 'image_search/:limit/:searchterm' => 'image_search#search'
   match 'order_search' => 'main#order_search'
   match 'order_search/:limit/:searchterm' => 'order_search#search'
+  match 'sidekiq_queue_jobcount' => 'main#sidekiq_queue_jobcount'
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

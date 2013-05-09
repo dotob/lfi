@@ -1,8 +1,8 @@
 div.hero-unit
   h3 status
   = form_tag '/start_updating_orders' do
-    = button_tag("alle bestellungen aktualisieren", :class => "btn btn-success")
-  h3 #{@jobs} jobs
+    = button_tag "alle bestellungen aktualisieren", :class => "btn btn-success", :id => "start"
+  h3#jobcount data-queue-name="orderloader" #{@jobs} jobs
 
 div.hero-unit
   h3 bestellungen (#{@order_count})

@@ -3,7 +3,7 @@ class MainController < ApplicationController
 
   def images
     stats = Sidekiq::Stats.new
-    @jobs = stats.enqueued
+    @jobs = stats.queues["dirscanner"]
     @image_count = Image.count
     @images = Image.order("last_visit DESC").limit(100)
   end
@@ -27,7 +27,7 @@ class MainController < ApplicationController
 
   def orders
     stats = Sidekiq::Stats.new
-    @jobs = stats.enqueued
+    @jobs = stats.queues["orderloader"]
     @order_count = Order.count
     @orders = Order.order("key DESC").limit(20)
     @copy_targets = CopyTarget.order("prio")
@@ -52,5 +52,11 @@ class MainController < ApplicationController
     copy_target = CopyTarget.find(params[:copy_target_id])
     CopyOrderWorker.perform_async(order.id, copy_target.path)
     redirect_to :action => "orders"
+  end
+
+  def sidekiq_queue_jobcount
+    stats = Sidekiq::Stats.new
+    jobs = stats.queues
+    respond_with jobs
   end
 end
