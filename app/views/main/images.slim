@@ -1,7 +1,7 @@
 div.hero-unit
-  h3 status
+  h3 bilder
   = form_tag '/start_scanning' do
-    = button_tag("start scannen nach bildern", :class => "btn btn-success")
+    = button_tag "<i class=\"icon-refresh icon-white\"></i> starte scannen nach bildern".html_safe, :class => "btn btn-success"
   h3 #{@jobs} jobs
 
 div.hero-unit

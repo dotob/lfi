@@ -1,7 +1,7 @@
 div.hero-unit
-  h3 status
+  h3 bestellungen
   = form_tag '/start_updating_orders' do
-    = button_tag "alle bestellungen aktualisieren", :class => "btn btn-success", :id => "start"
+    = button_tag "<i class=\"icon-refresh icon-white\"></i> alle bestellungen aktualisieren".html_safe, :class => "btn btn-success", :id => "start"
   h3#jobcount data-queue-name="orderloader" #{@jobs} jobs
 
 div.hero-unit

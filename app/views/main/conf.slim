@@ -15,7 +15,8 @@ div.hero-unit
             td.active = item.active
             td.last_visit = item.last_visit
             td
-              a href="/scan_paths/#{item.id}" data-confirm="wirklich löschen?" data-method="delete" rel="nofollow" class="btn btn-danger novisithighlight" löschen
+              a href="/scan_paths/#{item.id}" data-confirm="wirklich löschen?" data-method="delete" rel="nofollow" class="btn btn-danger novisithighlight"
+                i class="icon-trash icon-white"
 
   - else
     p keine verzeichnisse bisher. lege welche an!
@@ -25,7 +26,8 @@ div.hero-unit
     input type="text" placeholder="intervall [min]" id="scan_path_interval" name="scan_path[interval]"
     label class="checkbox" 
       input type="checkbox" id="scan_path_active" name="scan_path[active]" aktiv
-    button type="submit" class="btn" anlegen
+    button type="submit" class="btn"
+      i class="icon-ok-sign"
 
 
 div.hero-unit
@@ -43,7 +45,8 @@ div.hero-unit
             td.prio = item.prio
             td.active = item.active
             td
-              a href="/copy_targets/#{item.id}" data-confirm="wirklich löschen?" data-method="delete" rel="nofollow" class="btn btn-danger novisithighlight" löschen
+              a href="/copy_targets/#{item.id}" data-confirm="wirklich löschen?" data-method="delete" rel="nofollow" class="btn btn-danger novisithighlight"
+                i class="icon-trash icon-white"
 
   - else
     p keine verzeichnisse bisher. lege welche an!
@@ -53,4 +56,5 @@ div.hero-unit
     input type="text" placeholder="priorität" id="copy_target_prio" name="copy_target[prio]"
     label class="checkbox" 
       input type="checkbox" id="copy_target_active" name="copy_target[active]" aktiv
-    button type="submit" class="btn" anlegen
+    button type="submit" class="btn" 
+      i class="icon-ok-sign"
