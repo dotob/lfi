@@ -13,7 +13,7 @@ tr.resultrow
         kopieren nach 
         span.caret
       ul.dropdown-menu
-       |{{#each copy_targets}}
+       |{{#each more}}
          <li>
            <a href="start_copy_order/{{item.id}}/{{this.id}}">{{this.path}}</a>
         </li>
