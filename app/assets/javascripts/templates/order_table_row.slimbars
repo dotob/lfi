@@ -1,4 +1,16 @@
 tr.resultrow
-  td {{login}}
-  td {{name}}
-  td {{key}}
+  td.login 
+    a href="order/{{id}}" {{login}}
+  td.name {{name}}
+  td.key {{key}}
+  td.count {{count}}
+  td.update
+    a class="btn btn-primary" href="start_updating_order/{{id}}"
+      i class="icon-refresh icon-white"
+  td.copy
+    div.btn-group
+      a class="btn dropdown-toggle" data-toggle="dropdown" href="#"
+        kopieren nach 
+        span.caret
+      ul.dropdown-menu
+

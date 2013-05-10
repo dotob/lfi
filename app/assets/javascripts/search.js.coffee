@@ -18,11 +18,11 @@ search = (searchterm) ->
   l = limit()
   url = "/#{search_type()}/#{l}/#{searchterm}"
   $.getJSON url, (results) ->
-    count = results.length
+    count = results.items.length
     elips = ""
     elips = "..." if count == l 
     $("#result_count").text("gefunden (#{count}#{elips})")
-    $.each results, (k, v)->
+    $.each results.items, (k, v)->
       fill v
 
 # find which search to query
@@ -35,7 +35,9 @@ table_row_template = () ->
 
 # find out how many results to return
 limit = () ->
-  if $("#limit100").hasClass("active")
+  if $("#limit10").hasClass("active")
+    return 10
+  else if $("#limit100").hasClass("active")
     return 100
   else if $("#limit1000").hasClass("active")
     return 1000
