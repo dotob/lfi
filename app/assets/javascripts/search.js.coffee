@@ -1,3 +1,4 @@
+# after document loaded completely
 $(document).ready ->
   $("#searchterm").focus()
   $("#searchterm").keyup ->
@@ -6,12 +7,6 @@ $(document).ready ->
     searchterm = $(this).val()
     if searchterm.length > 0
       throttled_search searchterm
-    
-
-# render a table row
-fill = (context) ->
-  t = HandlebarsTemplates[table_row_template()](context);
-  $(t).appendTo("#results")
 
 # do searchrequest to searchservice
 search = (searchterm) ->
@@ -23,7 +18,12 @@ search = (searchterm) ->
     elips = "..." if count == l 
     $("#result_count").text("gefunden (#{count}#{elips})")
     $.each results.items, (k, v)->
-      fill v
+      fill v, results.copy_targets
+
+# render a table row
+fill = (item, more) ->
+  t = HandlebarsTemplates[table_row_template()]({item: item, more: more});
+  $(t).appendTo("#results")
 
 # find which search to query
 search_type = () ->

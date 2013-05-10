@@ -1,11 +1,11 @@
 tr.resultrow
   td.login 
-    a href="order/{{id}}" {{login}}
-  td.name {{name}}
-  td.key {{key}}
-  td.count {{count}}
+    a href="order/{{item.id}}" {{item.login}}
+  td.name {{item.name}}
+  td.key {{item.key}}
+  td.count {{item.count}}
   td.update
-    a class="btn btn-primary" href="start_updating_order/{{id}}"
+    a class="btn btn-primary" href="start_updating_order/{{item.id}}"
       i class="icon-refresh icon-white"
   td.copy
     div.btn-group
@@ -13,4 +13,9 @@ tr.resultrow
         kopieren nach 
         span.caret
       ul.dropdown-menu
+       |{{#each copy_targets}}
+         <li>
+           <a href="start_copy_order/{{item.id}}/{{this.id}}">{{this.path}}</a>
+        </li>
+       |{{/each}}
 

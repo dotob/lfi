@@ -1,4 +1,4 @@
 tr.resultrow
-  td {{name}}
-  td {{path}}
-  td {{file_type}}
+  td {{item.name}}
+  td {{item.path}}
+  td {{item.file_type}}
