@@ -18,7 +18,7 @@ class DirScanner
       i.file_name = File.basename(f)
       i.path = f
       i.directory = File.dirname(f)
-      i.file_type = File.extname(f).downcase[0..3]
+      i.file_type = File.extname(f).downcase[1..4]
       i.name = File.basename(f, i.file_type)
       i.last_change = File.mtime(f) 
       i.last_visit = DateTime.now
