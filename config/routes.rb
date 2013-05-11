@@ -1,9 +1,6 @@
 Lfi::Application.routes.draw do
 
   
-  resources :scan_paths
-  resources :copy_targets
-  resources :images
   root :to => 'main#images'
 
   # actions
@@ -17,6 +14,7 @@ Lfi::Application.routes.draw do
   match 'orders' => 'main#orders'
   match 'order/:id' => 'main#order'
   match 'stats' => 'stats#index'
+  match 'images' => 'main#images'
 
   # json services
   match 'image_search' => 'main#image_search'
@@ -25,6 +23,12 @@ Lfi::Application.routes.draw do
   match 'order_search/:limit/:searchterm' => 'search#order_search'
   match 'sidekiq_queue_jobcount' => 'main#sidekiq_queue_jobcount'
 
+  # resources
+  resources :scan_paths
+  resources :copy_targets
+  resources :images
+  
+  # sidekiq
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 

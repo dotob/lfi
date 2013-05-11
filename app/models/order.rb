@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :order_contents
   has_many :order_items, :through => :order_contents
-  attr_accessible :count, :key, :login, :name
+  attr_accessible :count, :key, :login, :name, :created
 
   def self.create_from_json(j)
     Rails::logger.debug "Order: create or find order #{j[:id]} - #{j[:name]}"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508175905) do
+ActiveRecord::Schema.define(:version => 20130511082538) do
 
   create_table "copy_targets", :force => true do |t|
     t.string   "path"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20130508175905) do
     t.datetime "updated_at",                  :null => false
   end
 
+  add_index "images", ["file_name"], :name => "index_images_on_file_name"
+  add_index "images", ["file_type"], :name => "index_images_on_file_type"
+  add_index "images", ["last_change"], :name => "index_images_on_last_change"
+  add_index "images", ["last_visit"], :name => "index_images_on_last_visit"
+  add_index "images", ["name"], :name => "index_images_on_name"
   add_index "images", ["path"], :name => "index_images_on_path", :unique => true
 
   create_table "order_contents", :force => true do |t|
@@ -58,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130508175905) do
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.datetime "created"
   end
 
   create_table "scan_paths", :force => true do |t|
