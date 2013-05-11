@@ -1,6 +1,31 @@
 div.hero-unit
   h3 bilder
+  p alle bilder #{@all_images_count}
+  div.progress
+    div.bar style="width: 100%;"
+  
+  p jpg #{@jpg_count}
+  div.progress
+    div.bar style="width: #{@jpg_percentage}%;"
+  
+  p tif #{@tif_count}
+  div.progress
+    div.bar style="width: #{@tif_percentage}%;"
+  
+  p xmp #{@xmp_count}
+  div.progress
+    div.bar style="width: #{@xmp_percentage}%;"
+  
+  p nef #{@nef_count}
+  div.progress
+    div.bar style="width: #{@nef_percentage}%;"
+  
+  p psd #{@psd_count}
+  div.progress
+    div.bar style="width: #{@psd_percentage}%;"
+
 div.hero-unit
   h3 bestellungen
+  p alle bestellungen #{@all_orders_count}
 div.hero-unit
   h3 sidekiq

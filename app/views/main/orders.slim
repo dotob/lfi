@@ -12,6 +12,7 @@ div.hero-unit
         th login
         th name
         th id
+        th erstellt
         th bilderanzahl
         th updaten
         th kopieren
@@ -21,6 +22,7 @@ div.hero-unit
               a href="order/#{item.id}" = item.login
             td.name = item.name
             td.key = item.key
+            td.created = item.created
             td.count 
               - if item.image_matches == item.count
                 = "#{item.image_matches} / #{item.count}  "

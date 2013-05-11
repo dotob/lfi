@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
       o.name = j[:name]
       o.login = j[:login]
       o.count = j[:total].to_i
+      o.created = Date.strptime(j[:created],"%Y-%m-%d %H:%M:%S")
       o.save
     rescue SystemCallError => autsch
       Rails::logger.debug "Order: failed to save order #{j[:id]} - #{j[:name]} with error: #{autsch}"
