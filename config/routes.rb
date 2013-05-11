@@ -5,13 +5,20 @@ Lfi::Application.routes.draw do
   resources :copy_targets
   resources :images
   root :to => 'main#images'
+
+  # actions
   match 'start_scanning' => 'main#start_scanning'
   match 'start_updating_orders' => 'main#start_updating_orders'
   match 'start_updating_order/:id' => 'main#start_updating_order'
   match 'start_copy_order/:order_id/:copy_target_id' => 'main#start_copy_order'
+
+  # pages
   match 'conf' => 'main#conf'
   match 'orders' => 'main#orders'
   match 'order/:id' => 'main#order'
+  match 'stats' => 'stats#index'
+
+  # json services
   match 'image_search' => 'main#image_search'
   match 'image_search/:limit/:searchterm' => 'search#image_search'
   match 'order_search' => 'main#order_search'
