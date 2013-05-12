@@ -12,6 +12,19 @@ class MainController < ApplicationController
     @image = Image.find(params[:id])
   end
 
+  def show_image
+    if @image = Image.find(params[:id])
+      if @image.file_type == "jpg"
+        send_data(
+          open(@image.path, "rb").read,
+          :type => 'image/jpeg',
+          :filename => @image.file_name,
+          :disposition => 'inline'
+        )
+      end
+    end
+  end
+
   def conf
     @scan_paths = ScanPath.all
     @scan_path = ScanPath.new

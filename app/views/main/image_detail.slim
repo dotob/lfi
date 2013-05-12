@@ -17,4 +17,4 @@ div.hero-unit
       td geändert
       td.last_change = I18n.l @image.last_change, :format => :short
 
-  img src="file://#{@image.path}" alt="#{@image.name}"
+  img src="/show_image/#{@image.id}" alt="#{@image.name}"
