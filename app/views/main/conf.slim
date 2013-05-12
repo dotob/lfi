@@ -20,7 +20,7 @@ div.hero-unit
 
   - else
     p keine verzeichnisse bisher. lege welche an!
-  h3 verzeichnis anlegen
+  h4 verzeichnis anlegen
   = form_for @scan_path,:html => { :class => 'form-inline'} do |f|
     input type="text" placeholder="verzeichnis" id="scan_path_path" name="scan_path[path]"
     input type="text" placeholder="intervall [min]" id="scan_path_interval" name="scan_path[interval]"
@@ -50,7 +50,7 @@ div.hero-unit
 
   - else
     p keine verzeichnisse bisher. lege welche an!
-  h3 zielverzeichnis anlegen
+  h4 zielverzeichnis anlegen
   = form_for @copy_target,:html => { :class => 'form-inline'} do |f|
     input type="text" placeholder="verzeichnis" id="copy_target_path" name="copy_target[path]"
     input type="text" placeholder="priorität" id="copy_target_prio" name="copy_target[prio]"

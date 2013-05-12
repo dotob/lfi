@@ -2,20 +2,27 @@
 $(document).ready ->
   $("#searchterm").focus()
   $("#searchterm").keyup ->
+    presearch(limit())
+  $(".limit").click ->
+    id = $(this).attr("id")
+    limitNumberString = id.substring(5,id.length)
+    limitNumber = parseInt(limitNumberString)
+    presearch(limitNumber)
+
+presearch = (limit) ->
+    searchterm = $("#searchterm").val()
     $(".resultrow").remove()
     $("#result_count").text("nix gefunden")
-    searchterm = $(this).val()
     if searchterm.length > 0
-      throttled_search searchterm
+      throttled_search searchterm, limit
 
 # do searchrequest to searchservice
-search = (searchterm) ->
-  l = limit()
-  url = "/#{search_type()}/#{l}/#{searchterm}"
+search = (searchterm, limit) ->
+  url = "/#{search_type()}/#{limit}/#{searchterm}"
   $.getJSON url, (results) ->
     count = results.items.length
     elips = ""
-    elips = "..." if count == l 
+    elips = "..." if count == limit 
     $("#result_count").text("gefunden (#{count}#{elips})")
     $.each results.items, (k, v)->
       fill v, results.copy_targets

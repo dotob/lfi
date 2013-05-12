@@ -5,7 +5,9 @@ div.hero-unit
   h3#jobcount data-queue-name="orderloader" #{@jobs} jobs
 
 div.hero-unit
-  h3 bestellungen (#{@order_count})
+  h3 
+    | bestellungen (#{@order_count})
+    small  refresh page for update
   - if @orders.any?
     table class="table table-striped table-bordered" id="orders"
       tr 

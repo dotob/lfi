@@ -2,10 +2,10 @@ div.hero-unit
   h3 suchen
   input#searchterm type="text" data-search="order_search"
   div.btn-group data-toggle="buttons-radio"
-    button#limit10.btn 10
-    button#limit100 class="btn active" 100
-    button#limit1000.btn 1000
-    button#limitAll.btn alle
+    button#limit10 class="btn limit" 10
+    button#limit100 class="btn limit active" 100
+    button#limit1000 class="btn limit" 1000
+    button#limit-1 class="btn limit" alle
     
   h3#result_count nix gefunden 
   table class="table table-striped table-bordered" id="results" data-row-template="order_table_row"

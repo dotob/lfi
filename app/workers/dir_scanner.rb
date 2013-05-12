@@ -12,14 +12,15 @@ class DirScanner
       end
     end
     # scan for files
-    Dir.glob("#{directory}/{*.jpg,*JPG,*.xmp,*.nef,*.NEF,*.tiff,*.tif,*.TIFF,*.TIF,*.psd,*.PSD}") do |f|
+    Dir.glob("#{directory}/{*.jpg,*.JPG,*.xmp,*.nef,*.NEF,*.tiff,*.tif,*.TIFF,*.TIF,*.psd,*.PSD}") do |f|
       Rails::logger.debug "DirScanner: found #{f}"
       i = Image.find_or_initialize_by_path(f)
       i.file_name = File.basename(f)
       i.path = f
       i.directory = File.dirname(f)
-      i.file_type = File.extname(f).downcase[1..4]
-      i.name = File.basename(f, i.file_type)
+      extension = File.extname(f)
+      i.file_type = extension.downcase[1..4]
+      i.name = File.basename(f, extension)
       i.last_change = File.mtime(f) 
       i.last_visit = DateTime.now
       begin
