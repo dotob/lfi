@@ -2,7 +2,7 @@ div.hero-unit
   h3 bilder
   = form_tag '/start_scanning' do
     = button_tag "<i class=\"icon-refresh icon-white\"></i> starte scannen nach bildern".html_safe, :class => "btn btn-success", :id => "start"
-  h3#jobcount data-queue-name="orderloader" #{@jobs} jobs
+  h3#jobcount data-queue-name="dirscanner" #{@jobs} jobs
 
 div.hero-unit
   h3 bilder (#{@image_count})
