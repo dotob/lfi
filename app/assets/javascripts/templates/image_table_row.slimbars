@@ -1,6 +1,5 @@
 tr.resultrow
   td {{item.name}}
   td {{item.path}}
-  td {{item.file_type}}
   td {{item.last_visit}}
   td {{item.last_change}}

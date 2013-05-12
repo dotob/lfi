@@ -11,15 +11,14 @@ div.hero-unit
         tr 
           th name
           th verzeichnis
-          th typ
           th gescanned
           th letzte änderung
           - for item in @images do
             tr
-              td.name = item.name
+              td.name 
+                a href="/image/#{item.id}" = item.name
               td.path = item.path
-              td.typ = item.file_type
-              td.last_visit = item.last_visit
-              td.last_change = item.last_change
+              td.last_visit = I18n.l item.last_visit, :format => :short
+              td.last_change = I18n.l item.last_change, :format => :short
   - else
     p noch keine bilder. starte den scan!

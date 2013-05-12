@@ -15,4 +15,11 @@ class OrderItem < ActiveRecord::Base
     paths
   end
 
+  def get_first_image_id
+    unless images.nil?
+      if images.any?
+        return images.first.id
+      end
+    end
+  end
 end

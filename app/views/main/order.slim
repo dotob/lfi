@@ -9,7 +9,7 @@ div.hero-unit
             tr
               td.from_order = item.file_name
               td.file_original 
-                a href="file://#{item.get_image_paths}" = item.get_image_paths
+                a href="/image/#{item.get_first_image_id}" = item.get_image_paths
   - else
     p No order_items found please add some.
       Thank you!

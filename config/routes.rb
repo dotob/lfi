@@ -15,6 +15,7 @@ Lfi::Application.routes.draw do
   match 'order/:id' => 'main#order'
   match 'stats' => 'stats#index'
   match 'images' => 'main#images'
+  match 'image/:id' => 'main#image_detail'
 
   # json services
   match 'image_search' => 'main#image_search'
@@ -26,7 +27,6 @@ Lfi::Application.routes.draw do
   # resources
   resources :scan_paths
   resources :copy_targets
-  resources :images
   
   # sidekiq
   require 'sidekiq/web'

@@ -8,6 +8,10 @@ class MainController < ApplicationController
     @images = Image.order("last_visit DESC").limit(100)
   end
 
+  def image_detail
+    @image = Image.find(params[:id])
+  end
+
   def conf
     @scan_paths = ScanPath.all
     @scan_path = ScanPath.new
