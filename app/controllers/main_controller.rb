@@ -52,6 +52,7 @@ class MainController < ApplicationController
   
   def order
     @order = Order.find(params[:id])
+    @copy_targets = CopyTarget.order("prio")
   end
   
   def start_updating_orders

@@ -1,5 +1,16 @@
 div.hero-unit
-  h3 bestellung #{@order.name}, #{@order.login}
+  h3 bestellung #{@order.key} von #{@order.login}
+  a class="btn btn-primary" href="start_updating_order/#{@order.id}" alt="aktualisieren"
+    i class="icon-refresh icon-white"
+  div.btn-group
+    a class="btn dropdown-toggle" data-toggle="dropdown" href="#"
+      kopieren nach 
+      span.caret
+    ul.dropdown-menu
+      - for copy_target in @copy_targets do
+        li
+          a href="start_copy_order/#{order.id}/#{copy_target.id}" = copy_target.path
+
   - if @order.order_items.any?
       table class="table table-striped table-bordered" id="order_items"
         tr 
