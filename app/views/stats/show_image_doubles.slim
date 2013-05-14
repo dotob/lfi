@@ -1,0 +1,13 @@
+div.hero-unit
+  h3 doubletten #{@doubles_count}
+  - if @doubles.any?
+    ul
+      - for item in @doubles do
+        li 
+          strong #{item.file_name}
+          ul
+            - for double in item.get_doubles do
+              li 
+                a href="/image/#{double.id}" = double.path
+  - else
+    p juhuuuu, keine doubletten

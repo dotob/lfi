@@ -17,6 +17,7 @@ Lfi::Application.routes.draw do
   match 'images' => 'main#images'
   match 'image/:id' => 'main#image_detail'
   match 'show_image/:id' => 'main#show_image'
+  match 'image_doubles' => 'stats#show_image_doubles'
 
   # json services
   match 'image_search' => 'main#image_search'

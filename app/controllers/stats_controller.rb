@@ -9,7 +9,7 @@ class StatsController < ApplicationController
     @nef_count = Image.where("file_type = 'nef'").count
     @xmp_count = Image.where("file_type = 'xmp'").count
     @psd_count = Image.where("file_type = 'psd'").count
-    @doubles_count = Image.select("file_name").group("file_name").having("count() > 1")
+    @doubles_count = Image.select("file_name").group("file_name").having("count() > 1").length()
     @jpg_percentage = @jpg_count /( @all_images_count / 100)
     @tif_percentage = @tif_count /( @all_images_count / 100)
     @nef_percentage = @nef_count /( @all_images_count / 100)
@@ -19,6 +19,11 @@ class StatsController < ApplicationController
 
     # orders stats
     @all_orders_count = Order.count
+  end
+
+  def show_image_doubles
+    @doubles = Image.group("file_name").having("count() > 1")
+    @doubles_count = @doubles.length()
   end
 end
 

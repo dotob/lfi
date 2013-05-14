@@ -1,5 +1,6 @@
 div.hero-unit
   h3 bilder
+  h4 typen
   p alle bilder #{@all_images_count}
   div.progress
     div.bar style="width: 100%;"
@@ -23,6 +24,9 @@ div.hero-unit
   p psd #{@psd_count}
   div.progress
     div.bar style="width: #{@psd_percentage}%;"
+
+  h4 doubletten
+  a href="/image_doubles" #{@doubles_count}
 
 div.hero-unit
   h3 bestellungen
