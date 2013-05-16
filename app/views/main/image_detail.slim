@@ -17,4 +17,24 @@ div.hero-unit
       td geändert
       td.last_change = I18n.l @image.last_change, :format => :short
 
+  h3 bestellungen
+  - if @image.order_items.any?
+      table class="table table-striped table-bordered" id="image_orders"
+        tr 
+          th login
+          th name
+          th id
+          th erstellt
+          - for order_item in @image.order_items do
+            - for order in order_item.orders do
+              tr
+                td.login 
+                  a href="/order/#{order.id}" = order.login
+                td.name = order.name
+                td.key = order.key
+                td.created = I18n.l order.created, :format => :short
+  - else
+    p keine bestellungen...
+
+  h3 bild
   img src="/show_image/#{@image.id}" alt="#{@image.name}"
