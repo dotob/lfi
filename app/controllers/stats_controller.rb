@@ -22,7 +22,7 @@ class StatsController < ApplicationController
   end
 
   def show_image_doubles
-    @doubles = Image.group("file_name").having("count() > 1")
+    @doubles = Image.group("file_name").having("count() > 1").page(params[:page])
     @doubles_count = @doubles.length()
   end
 end

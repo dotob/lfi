@@ -13,6 +13,7 @@ gem 'sinatra', :require => false
 gem 'whenever', :require => false
 gem 'underscore-rails'
 gem 'json'
+gem 'kaminari'
 
 # Gems used only for assets and not required
 # in production environments by default.
