@@ -10,10 +10,10 @@ gem 'sidekiq'
 gem 'slim'
 gem 'bootstrap-sass'
 gem 'sinatra', :require => false
-gem 'whenever', :require => false
 gem 'underscore-rails'
 gem 'json'
 gem 'kaminari'
+gem 'clockwork'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -9,7 +9,7 @@ div.hero-unit
     ul.dropdown-menu
       - for copy_target in @copy_targets do
         li
-          a href="start_copy_order/#{order.id}/#{copy_target.id}" = copy_target.path
+          a href="start_copy_order/#{@order.id}/#{copy_target.id}" = copy_target.path
 
   - if @order.order_items.any?
       table class="table table-striped table-bordered" id="order_items"
