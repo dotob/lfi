@@ -12,9 +12,18 @@ class CheckForNewOrders
     if latest_order
       order_list = OrderLoader.get_orders
       order_list.each do |jo|
-        Rails::logger.debug "CheckForNewOrders: "
-        o = Order.create_from_json(jo)
-        OrderItemsLoader.perform_async(o.id)
+        already_know_it = Order.exists(jo[:id])
+        unless already_know_it
+          o = Order.create_from_json(jo)
+          Rails::logger.debug "CheckForNewOrders: found new order with id=#{o.id}"
+          ct = CopyTarget.where(:prio, 0).first
+          if ct
+            CopyOrderWorker.perform_async(o.id, ct.path)
+            Rails::logger.debug "CheckForNewOrders: started copying order #{o.id} to #{ct.path}"
+          else
+            Rails::logger.debug "CheckForNewOrders: no copytarget with prio 1 found. did nothing..."
+          end
+        end
       end
     end
   end
