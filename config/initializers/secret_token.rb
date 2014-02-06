@@ -5,3 +5,4 @@
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
 Lfi::Application.config.secret_token = 'dflkjhasdlfhaslkdjnflaskjdhfpiuwqejnfkjasndpivuhergkner-ghkmdfopuvhcgiuqkwghvebrweskfdbjA'
+Lfi::Application.config.secret_key_base = 'dflkjhasdlfhaslkdjnflaskjdhfpiuwqejnfkjasndpivuhergkner-ghkmdfopuvhcgiuqkwghvebrweskfdbjA'

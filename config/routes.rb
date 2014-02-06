@@ -4,27 +4,27 @@ Lfi::Application.routes.draw do
   root :to => 'main#images'
 
   # actions
-  match 'start_scanning' => 'main#start_scanning'
-  match 'start_updating_orders' => 'main#start_updating_orders'
-  match 'start_updating_order/:id' => 'main#start_updating_order'
-  match 'start_copy_order/:order_id/:copy_target_id' => 'main#start_copy_order'
+  get 'start_scanning' => 'main#start_scanning'
+  get 'start_updating_orders' => 'main#start_updating_orders'
+  get 'start_updating_order/:id' => 'main#start_updating_order'
+  get 'start_copy_order/:order_id/:copy_target_id' => 'main#start_copy_order'
 
   # pages
-  match 'conf' => 'main#conf'
-  match 'orders' => 'main#orders'
-  match 'order/:id' => 'main#order'
-  match 'stats' => 'stats#index'
-  match 'images' => 'main#images'
-  match 'image/:id' => 'main#image_detail'
-  match 'show_image/:id' => 'main#show_image'
-  match 'image_doubles' => 'stats#show_image_doubles'
+  get 'conf' => 'main#conf'
+  get 'orders' => 'main#orders'
+  get 'order/:id' => 'main#order'
+  get 'stats' => 'stats#index'
+  get 'images' => 'main#images'
+  get 'image/:id' => 'main#image_detail'
+  get 'show_image/:id' => 'main#show_image'
+  get 'image_doubles' => 'stats#show_image_doubles'
 
   # json services
-  match 'image_search' => 'main#image_search'
-  match 'image_search/:limit/:searchterm' => 'search#image_search'
-  match 'order_search' => 'main#order_search'
-  match 'order_search/:limit/:searchterm' => 'search#order_search'
-  match 'sidekiq_queue_jobcount' => 'main#sidekiq_queue_jobcount'
+  get 'image_search' => 'main#image_search'
+  get 'image_search/:limit/:searchterm' => 'search#image_search'
+  get 'order_search' => 'main#order_search'
+  get 'order_search/:limit/:searchterm' => 'search#order_search'
+  get 'sidekiq_queue_jobcount' => 'main#sidekiq_queue_jobcount'
 
   # resources
   resources :scan_paths

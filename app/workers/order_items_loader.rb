@@ -18,7 +18,7 @@ class OrderItemsLoader
         begin
           fn = oi[:filename_orig]
           Rails::logger.debug "OrderItemsLoader: add orderitem for file #{fn}"
-          oi = OrderItem.find_or_initialize_by_file_name(fn)
+          oi = OrderItem.find_or_initialize_by(file_name: fn)
           oi.orders << order
           imgs = find_images(fn)
           unless imgs.nil?

@@ -33,7 +33,7 @@ class MainController < ApplicationController
   end
 
   def start_scanning
-    for sp in ScanPath.find_all_by_active(true)
+    for sp in ScanPath.where(active: true)
       Rails::logger.debug "start scan for #{sp.path}"
       DirScanner.perform_async(sp.path)
       sp.last_visit = DateTime.now

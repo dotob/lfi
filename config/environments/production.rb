@@ -20,6 +20,10 @@ Lfi::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+
+  # new for rails 4
+  config.eager_load = false
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
@@ -60,8 +64,4 @@ Lfi::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end

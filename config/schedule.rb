@@ -21,7 +21,7 @@
 
 
 every 1.minutes do
-  for sp in ScanPath.find_all_by_active(true)
+  for sp in ScanPath.where(active: true)
     if (DateTime.now - sp.last_visit) > sp.interval
       DirScanner.perform_async(sp.id)
     end

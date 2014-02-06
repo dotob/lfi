@@ -1,10 +1,14 @@
 tr.resultrow
   td.login 
     a href="order/{{item.id}}" {{item.login}}
-  td.name {{item.name}}
-  td.key {{item.key}}
-  td.created {{item.created}}
-  td.count {{item.count}}
+  td.name 
+    | {{item.name}}
+  td.key 
+    | {{item.key}}
+  td.created 
+    | {{item.created}}
+  td.count 
+    | {{item.count}}
   td.update
     a class="btn btn-primary" href="start_updating_order/{{item.id}}"
       i class="icon-refresh icon-white"

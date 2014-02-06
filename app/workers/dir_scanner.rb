@@ -14,7 +14,7 @@ class DirScanner
     # scan for files
     Dir.glob("#{directory}/{*.jpg,*.JPG,*.xmp,*.nef,*.NEF,*.tiff,*.tif,*.TIFF,*.TIF,*.psd,*.PSD}") do |f|
       Rails::logger.debug "DirScanner: found #{f}"
-      i = Image.find_or_initialize_by_path(f)
+      i = Image.find_or_initialize_by(path: f)
       i.file_name = File.basename(f)
       i.path = f
       i.directory = File.dirname(f)
